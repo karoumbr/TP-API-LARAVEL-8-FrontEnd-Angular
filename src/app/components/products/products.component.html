@@ -1,0 +1,44 @@
+<form (ngSubmit)="insertData()">
+    <div class="form-group">
+        <label for="reference">Référence</label>
+       <input type="text" name="reference" class="text form-control" [(ngModel)]="product.reference">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+       <input type="text" name="description" class="text form-control" [(ngModel)]="product.description">
+    </div>
+    <div class="form-group">
+        <label for="quantite">Quantité</label>
+       <input type="text" name="quantite" class="text form-control" [(ngModel)]="product.quantite">
+    </div>
+    <div class="form-group">
+        <label for="prix">Prix</label>
+       <input type="text" name="prix" class="text form-control" [(ngModel)]="product.prix">
+    </div>
+    <button class="btn btn-dark btn -sm mt-4">Valider</button>
+</form>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Référence</th>
+            <th scope="col">Description</th>
+            <th scope="col">Quantité</th>
+            <th scope="col">Prix</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let prod of products">
+            <th scope="row">{{prod.id}}</th>
+            <td>{{prod.reference}}</td>
+            <td>{{prod.description}}</td>
+            <td>{{prod.quantite}}</td>
+            <td>{{prod.prix}}</td>
+            <td><button class="btn btn-danger btn-sm" (click)="deleteData(prod.id)">Supprimer</button></td>
+            <td><button class="btn btn-warning btn-sm mx-2" routerLink="edit/{{prod.id}}">Mise à jour</button></td>
+        </tr>
+    </tbody>
+</table>
